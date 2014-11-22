@@ -18,7 +18,8 @@
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="WEB/assets/js/ie-emulation-modes-warning.js"></script>
+    <script src="WEB/js/ie-emulation-modes-warning.js"></script>
+    <script src="WEB/js/dropzone.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -55,7 +56,9 @@
       <div class="starter-template">
         <h1>Cageification Service</h1>
         <p class="lead">Use the section below to upload files, then click the button to make the faces that of our One True God.</p>
+        <form action="/file-upload" class="dropzone" id="my-awesome-dropzone"></form>
       </div>
+
 
     </div><!-- /.container -->
 
@@ -66,6 +69,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="WEB/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="WEB/assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="WEB/js/ie10-viewport-bug-workaround.js"></script>
   </body>
 </html>
