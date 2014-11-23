@@ -23,7 +23,7 @@
     <script src="js/ie-emulation-modes-warning.js"></script>
     <script src="js/dropzone.js"></script>
     <script src="js/jquery-1.11.1.min.js"></script>
-
+    
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -63,7 +63,7 @@
           <form action="/file-upload" class="dropzone" id="my-awesome-dropzone"></form>
         </p>
         <p>
-          <button type="button" class="btn btn-lg btn-default">Cageify</button>
+          <button id="cage_btn" oncloick= type="button" class="btn btn-lg btn-default">Cageify</button>
         </p>
       </div>
 
@@ -80,5 +80,47 @@
     <script src="js/ie10-viewport-bug-workaround.js"></script>
     
     <script src="js/web.js"></script>
+    
+    <!-- Facial recognition><!-->
+    
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="facedetection/dist/jquery.facedetection.js"></script>
+    <script>
+        $(function () {
+          "use strict";
+          
+          $('#cage_btn').click(function (e) {
+                               console.log('Started face detection');
+                             e.preventDefault();
+                             
+                             $('.face').remove();
+                             
+                             $('#img0').faceDetection({
+                                                         complete: function (faces) {
+                                                         console.log(faces);
+                                                         
+                                                         for (var i = 0; i < faces.length; i++) {
+                                                         $('<div>', {
+                                                           'class':'face',
+                                                           'css': {
+                                                           'position': 'absolute',
+                                                           'left':     faces[i].x * faces[i].scaleX + 'px',
+                                                           'top':      faces[i].y * faces[i].scaleY + 'px',
+                                                           'width':    faces[i].width  * faces[i].scaleX + 'px',
+                                                           'height':   faces[i].height * faces[i].scaleY + 'px'
+                                                           }
+                                                           })
+                                                         .insertAfter(this);
+                                                         }
+                                                         },
+                                                         error:function (code, message) {
+                                                         alert('Error: ' + message);
+                                                         }
+                                                         });
+                             });
+          });
+        </script>
+    
+    
   </body>
 </html>
