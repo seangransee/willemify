@@ -18,14 +18,14 @@ $(function() {
         reader.readAsDataURL(file);
 	});
 
-
+/*
 	var imgFile = document.getElementById("willow");
 	var imgFile2 = document.getElementById("willow");
 
 	var w = document.getElementById("willowed");
 	var ctx=w.getContext("2d");
 	ctx.drawImage(imgFile,10,10);
-	ctx.drawImage(imgFile2,100,100);
+	ctx.drawImage(imgFile2,100,100);*/
 
 
 });

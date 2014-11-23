@@ -69,10 +69,6 @@
 
 
     </div><!-- /.container -->
-    <img id="willow" src="img/willow.jpg" />
-
-    <img id="willow2" src="img/willow.jpg" />
-    <canvas id="willowed" height=500 width=500></canvas>
 
 
     <!-- Bootstrap core JavaScript
@@ -92,6 +88,31 @@
     <script>
         $(function () {
           "use strict";
+          var imgDiv = $("<div id='images'>");
+          //imgDiv.hide();
+          var faceArray = [];
+          var replaceFaces = function(){
+          var w = document.createElement('canvas');
+          w.height = 1000;//$('#img0').height();
+          w.width = 1000; //$('#img0').width();
+          w.x = $('#img0').x;
+          w.y = $('#img0').y;
+          var ctx= w.getContext("2d");
+          ctx.drawImage($('#img0').get(0),0,0);
+                         
+          for(var i = 0; i < faceArray.length; i ++){
+          
+                    var n = Math.floor((Math.random() * 10) + 1);
+                    var imgFile = document.getElementById("nick"+(n)+"");
+          imgFile.width = faceArray[i].scaleX * faceArray[i].width;
+          imgFile.height = faceArray[i].scaleY * faceArray[i].height;
+           
+                    ctx.drawImage(imgFile,faceArray[i].x - 0.5 * faceArray[i].width,faceArray[i].y - 0.5 * faceArray[i].height);
+          
+           }
+          //$('#images').show();
+          $('body').append(w);
+          }
           
           $('#cage_btn').click(function (e) {
                                console.log('Started face detection');
@@ -104,18 +125,10 @@
                                                          console.log(faces);
                                                          
                                                          for (var i = 0; i < faces.length; i++) {
-                                                         $('<div>', {
-                                                           'class':'face',
-                                                           'css': {
-                                                           'position': 'absolute',
-                                                           'left':     faces[i].x * faces[i].scaleX + 'px',
-                                                           'top':      faces[i].y * faces[i].scaleY + 'px',
-                                                           'width':    faces[i].width  * faces[i].scaleX + 'px',
-                                                           'height':   faces[i].height * faces[i].scaleY + 'px'
-                                                           }
-                                                           })
-                                                         .insertAfter(this);
+                                                          faceArray.push(faces[i]);
+                                                      
                                                          }
+                                                      replaceFaces();
                                                          },
                                                          error:function (code, message) {
                                                          alert('Error: ' + message);
@@ -124,7 +137,22 @@
                              });
           });
         </script>
-    
+        <div id ="imageholder"></div>
     
   </body>
+  
+  
+  <div style = 'display:none'>
+      <img id='nick1' src = 'img/nick1.png'></img>
+      <img id='nick2' src = 'img/nick2.png'></img>
+      <img id='nick3' src = 'img/nick3.png'></img>
+      <img id='nick4' src = 'img/nick4.png'></img>
+      <img id='nick5' src = 'img/nick5.png'></img>
+      <img id='nick6' src = 'img/nick6.png'></img>
+      <img id='nick7' src = 'img/nick7.png'></img>
+      <img id='nick8' src = 'img/nick8.png'></img>
+      <img id='nick9' src = 'img/nick9.png'></img>
+      <img id='nick10' src = 'img/nick10.png'></img>
+  </div>
+  
 </html>
