@@ -15,11 +15,14 @@
 
     <!-- Custom styles for this template -->
     <link href="WEB/css/starter-template.css" rel="stylesheet">
+    <link href="WEB/css/dropzone.css" rel="stylesheet">
+    <link href="WEB/css/basic.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="WEB/js/ie-emulation-modes-warning.js"></script>
     <script src="WEB/js/dropzone.js"></script>
+    <script src="WEB/js/jquery-1.11.1.min.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -56,7 +59,12 @@
       <div class="starter-template">
         <h1>Cageification Service</h1>
         <p class="lead">Use the section below to upload files, then click the button to make the faces that of our One True God.</p>
-        <form action="/file-upload" class="dropzone" id="my-awesome-dropzone"></form>
+        <p>
+          <form action="/file-upload" class="dropzone" id="my-awesome-dropzone"></form>
+        </p>
+        <p>
+          <button type="button" class="btn btn-lg btn-default">Cageify</button>
+        </p>
       </div>
 
 
