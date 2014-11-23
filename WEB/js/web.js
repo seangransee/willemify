@@ -25,21 +25,23 @@ $(function() {
 		console.log('Started face detection');
 
 		$('.face').remove();
+		for(var i = 0; i < counter; i ++) {
+			var id = '#img' + i;
 
-		$('#img0').faceDetection({
-			complete: function (faces) {
-				console.log(faces);
-				faceArray = []; 
-				for (var i = 0; i < faces.length; i++) {
-					faceArray.push(faces[i]);                                 
+			$(id).faceDetection({
+				complete: function (faces) {
+					console.log(faces);
+					faceArray = []; 
+					for (var i = 0; i < faces.length; i++) {
+						faceArray.push(faces[i]);                                 
+					}
+					replaceFaces(id);
+				},
+				error:function (code, message) {
+					alert('Error: ' + message);
 				}
-				replaceFaces();
-			},
-			error:function (code, message) {
-				alert('Error: ' + message);
-			}
-		});
-
+			});
+		}
 		showResults();
 	});
 
@@ -64,14 +66,14 @@ function clearResults() {
 	$("#fileselectiondiv").show();
 }
 
-var replaceFaces = function(){
+var replaceFaces = function(id){
 	var w = document.createElement('canvas');
 	w.height = 1000;//$('#img0').height();
 	w.width = 1000; //$('#img0').width();
-	w.x = $('#img0').x;
-	w.y = $('#img0').y;
+	w.x = $(id).x;
+	w.y = $(id).y;
 	var ctx= w.getContext("2d");
-	ctx.drawImage($('#img0').get(0),0,0);
+	ctx.drawImage($(id).get(0),0,0);
 
 	for(var i = 0; i < faceArray.length; i ++){
 		var n = Math.floor((Math.random() * 10) + 1);
