@@ -64,8 +64,10 @@ function showResults() {
 
 var replaceFaces = function(id){
 	var w = document.createElement('canvas');
-	w.height = 1000;//$('#img0').height();
-	w.width = 1000; //$('#img0').width();
+	$("#images").show();
+    w.height = $(id).height();
+	w.width = $(id).width();
+    $("#images").hide();
 	w.x = $(id).x;
 	w.y = $(id).y;
 	var ctx= w.getContext("2d");
