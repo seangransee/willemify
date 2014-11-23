@@ -68,6 +68,9 @@
         </div>
         <div id="resultsdiv">
           <h1>Results</h1>
+          <div id="resultsphotosdiv">
+          </div>
+          <button id = "done_btn" type="button" class="btn btn-lg btn-default">Start Over</button>
         </div>
       </div>
     </div><!-- /.container -->
@@ -87,63 +90,7 @@
     
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="facedetection/dist/jquery.facedetection.js"></script>
-    <script>
-        $(function () {
-          "use strict";
-          var imgDiv = $("<div id='images'>");
-          //imgDiv.hide();
-          var faceArray = [];
-          var replaceFaces = function(){
-          var w = document.createElement('canvas');
-          w.height = 1000;//$('#img0').height();
-          w.width = 1000; //$('#img0').width();
-          w.x = $('#img0').x;
-          w.y = $('#img0').y;
-          var ctx= w.getContext("2d");
-          ctx.drawImage($('#img0').get(0),0,0);
-                         
-          for(var i = 0; i < faceArray.length; i ++){
-          
-                    var n = Math.floor((Math.random() * 10) + 1);
-                    var imgFile = document.getElementById("nick"+(n)+"");
-          imgFile.width = faceArray[i].scaleX * faceArray[i].width;
-          imgFile.height = faceArray[i].scaleY * faceArray[i].height;
-          
-          var ratio = faceArray[i].width / imgFile.width;
-          var width = imgFile.height * ratio * 2;
-          var height = imgFile.height * ratio * 2;
-           
-            ctx.drawImage(imgFile,faceArray[i].x - 0.25 * width,faceArray[i].y - 0.25 * height,width,height);
-          
-           }
-          //$('#images').show();
-          $('body').append(w);
-          }
-          
-          $('#cage_btn').click(function (e) {
-                               console.log('Started face detection');
-                             e.preventDefault();
-                             
-                             $('.face').remove();
-                             
-                             $('#img0').faceDetection({
-                                                         complete: function (faces) {
-                                                         console.log(faces);
-                                                         
-                                                         for (var i = 0; i < faces.length; i++) {
-                                                          faceArray.push(faces[i]);
-                                                      
-                                                         }
-                                                      replaceFaces();
-                                                         },
-                                                         error:function (code, message) {
-                                                         alert('Error: ' + message);
-                                                         }
-                                                         });
-                             });
-          });
-        </script>
-        <div id ="imageholder"></div>
+    <div id ="imageholder"></div>
     
   </body>
   
