@@ -1,10 +1,13 @@
 var counter = 0;
+var resultsh1 = $("<h1>Results</h1>");
 
 $(function() {
 	
 	var imgDiv = $("<div id='images'>");
 	imgDiv.hide();
 	$("body").append(imgDiv);
+
+	$("#resultsdiv").hide();
 
 	Dropzone.instances[0].on("addedfile", function(file) {
 
@@ -17,15 +20,19 @@ $(function() {
         reader.onload = (function(aImg) { return function(e) { aImg.src = e.target.result; }; })(img);
         reader.readAsDataURL(file);
 	});
-
-/*
-	var imgFile = document.getElementById("willow");
-	var imgFile2 = document.getElementById("willow");
-
-	var w = document.getElementById("willowed");
-	var ctx=w.getContext("2d");
-	ctx.drawImage(imgFile,10,10);
-	ctx.drawImage(imgFile2,100,100);*/
-
-
 });
+
+function showResults() {
+	$("#fileselectiondiv").hide();
+	$("#resultsdiv").show();
+}
+
+function clearResults() {
+	$("#resultsdiv").hide();
+	$("#resultsdiv").empty();
+	$("#images").empty();
+	counter = 0;
+	Dropzone.instances[0].removeAllFiles();
+	$("#resultsdiv").append(resultsh1);
+	$("#fileselectiondiv").show();
+}
