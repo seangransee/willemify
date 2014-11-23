@@ -1,7 +1,7 @@
 {
-  "name": "node-js-getting-started",
-  "version": "0.1.2",
-  "description": "A sample Node.js app using Express 4",
+  "name": "Cageification",
+  "version": "0.1.0",
+  "description": "Replaces faces in images with Nic Cage",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
@@ -14,12 +14,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/heroku/node-js-getting-started"
+    "url": "https://github.com/jmklonowski/Cageification"
   },
   "keywords": [
     "node",
-    "heroku",
-    "express"
+    "nic",
+    "cage"
   ],
   "license": "MIT"
 }
