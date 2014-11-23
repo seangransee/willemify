@@ -46,7 +46,12 @@ $(function() {
 	});
 
 	$("#done_btn").click(function() {
-		clearResults();
+		$("#resultsdiv").hide();
+		$("#resultsphotosdiv").empty();
+		$("#images").empty();
+		counter = 0;
+		Dropzone.instances[0].removeAllFiles();
+		$("#fileselectiondiv").show();
 	});
 
 	$("#resultsdiv").hide();
@@ -55,15 +60,6 @@ $(function() {
 function showResults() {
 	$("#fileselectiondiv").hide();
 	$("#resultsdiv").show();
-}
-
-function clearResults() {
-	$("#resultsdiv").hide();
-	$("#resultsphotosdiv").empty();
-	$("#images").empty();
-	counter = 0;
-	Dropzone.instances[0].removeAllFiles();
-	$("#fileselectiondiv").show();
 }
 
 var replaceFaces = function(id){
